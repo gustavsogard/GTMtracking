@@ -1,0 +1,22 @@
+<script>
+window.dataLayer = window.dataLayer || [];
+
+window.addEventListener('message', function(e) {
+    if (e.data.bookingCompleted === true) {
+        window.dataLayer.push({
+            'event': 'bookingConfirmed',
+            'value': e.data.amount,
+            'transaction_id': e.data.bookingCode
+        })
+    }
+}, false);
+
+window.addEventListener('message', function(e) {
+    if (e.data.enterCustomerData === true) {
+        window.dataLayer.push({
+            'event': 'beginCheckout'
+        })
+    }
+}, false);
+
+</script>
